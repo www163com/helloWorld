@@ -32,6 +32,7 @@ public class Test1 {
 		// TODO Auto-generated method stub
 System.out.println("hello Git!!!");
 System.out.println("打印一句话");
+System.out.println("再打印一句话");
 	}
 
 }
