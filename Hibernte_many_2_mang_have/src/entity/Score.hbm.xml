@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+	<!-- 实体类的映射 -->
+	<class name="Score" table="TB_SCORE">
+		<!-- 主键属性的映射 -->
+		<id name="id" column="SCO_ID">
+			<!-- 主键生成器 -->
+			<generator class="native"/>
+		</id>
+		<!-- 其它属性的映射 -->
+		<property name="score" column="S_SCORE"/>
+		<!-- 多对一   对个成绩对应一个学生 -->
+		<many-to-one name="student" column="STU_ID" not-null="false" />
+		<!-- 多对一   对个成绩对应一个科目 -->
+		<many-to-one name="course" column="C_ID" not-null="false" />
+	
+	</class>
+
+</hibernate-mapping>

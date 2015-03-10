@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- 数据库连接设置 -->
+		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="connection.url">jdbc:sqlserver://localhost:1433;database=hellohibernateDB2</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password">123456</property>
+
+		<!-- 配置c3p0 -->
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">10</property>
+		<property name="hibernate.c3p0.timeout">1800</property>
+		<property name="hibernate.max_statements">50</property>
+		<!-- JDBC connection pool (use the built-in) -->
+		<!-- <property name="connection.pool_size">1</property> -->
+
+		<!-- SQL方言设置 -->
+		<property name="dialect">org.hibernate.dialect.SQLServer2005Dialect</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<!-- 在使用log4j的时候建议关闭该配置 -->
+		<property name="show_sql">false</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
+
+		<!-- 实体类的映射文件 -->
+		<mapping resource="entity/Course.hbm.xml" />
+		<mapping resource="entity/Student.hbm.xml" />
+		<mapping resource="entity/Score.hbm.xml" />
+
+	</session-factory>
+
+</hibernate-configuration>

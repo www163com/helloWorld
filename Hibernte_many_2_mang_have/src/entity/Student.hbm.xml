@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+	<!-- 实体类的映射 -->
+	<class name="Student" table="TB_STUDENT">
+		<!-- 主键属性的映射 -->
+		<id name="id" column="S_ID">
+			<!-- 主键生成器 -->
+			<generator class="native"/>
+		</id>
+		<!-- 其它属性的映射 -->
+		<property name="name" column="S_NAME"/>
+		
+		<!-- 一对多  一个学生对应多个成绩 -->
+		<set name="scores" inverse="true" cascade="save-update">
+		<key column="STU_ID"/>
+		<one-to-many class="Score"/>
+		</set> 
+	</class>
+
+</hibernate-mapping>
